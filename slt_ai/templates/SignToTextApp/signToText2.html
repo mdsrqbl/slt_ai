@@ -1,0 +1,237 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon"  href="{% static 'images/favicon.ico' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js"   crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+
+        <title>
+            PSL Translate - Text to Signs
+        </title>
+      
+        <!--     Fonts and icons     -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+        <!-- Nucleo Icons -->
+        <link href="https://appsrv1-147a1.kxcdn.com/soft-ui-dashboard-v105/css/nucleo-icons.css" rel="stylesheet" />
+        <link href="https://appsrv1-147a1.kxcdn.com/soft-ui-dashboard-v105/css/nucleo-svg.css" rel="stylesheet" />
+        <!-- Font Awesome Icons -->
+        <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+        <link href="https://appsrv1-147a1.kxcdn.com/soft-ui-dashboard-v105/css/nucleo-svg.css" rel="stylesheet" />
+        <!-- CSS Files -->
+        <link id="pagestyle" href="https://appsrv1-147a1.kxcdn.com/soft-ui-dashboard-v105/css/soft-ui-dashboard.css?v=1.0.5" rel="stylesheet" />
+
+        <!-- Specific CSS goes HERE -->
+        
+    </head> 
+
+    <body class="g-sidenav-show bg-gray-100" style="min-width:420px">
+        {% csrf_token %}
+        <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps--active-y">
+
+            <!-- Select Video -->
+            <div class="timeline-block mb-3">
+                <div class="timeline-content">
+                    <h6 class="text-dark text-sm font-weight-bold mb-0">Select Video</h6>
+                    
+                    
+                    <a id="open_camera" class="btn m-0 btn-outline-secondary btn-sm py-2 px-3" style="min-width:fit-content;min-height:fit-content;">Open Camera</a>
+                    
+                    <a id="log" class="btn m-0 btn-outline-secondary btn-sm py-2 px-3" style="min-width:fit-content;min-height:fit-content;">log</a>
+                    
+                    <div id='recording_box' class="col"  style="display:none;width:min-content;">
+                        <div class='row'><video id="camera_display" autoplay style="-webkit-transform: scaleX(-1);transform: scaleX(-1);width:fit-content;height:100%;max-width:80vw;max-height:80vh;"></video></div>
+                        <div class="row" style="margin:auto;">
+                            <div class='col px-0'><a id="start_rec" class="btn mt-2 mx-0 btn-outline-secondary btn-sm py-2 px-3" style="min-width:fit-content;width:100%;min-height:fit-content;">start recording</a></div>
+                            <div class='col     '><a id="pause_rec" class="btn mt-2 mx-0 btn-outline-secondary btn-sm py-2 px-3" style="min-width:fit-content;width:100%;min-height:fit-content;">pause recording</a></div>
+                            <div class='col px-0'><a id="staap_rec" class="btn mt-2 mx-0 btn-outline-secondary btn-sm py-2 px-3" style="min-width:fit-content;width:100%;min-height:fit-content;">stop recording</a></div>
+                        </div>
+                    </div>
+                    
+                    <video id="player" loop controls></video>
+                </div>
+            </div>
+
+
+            <!-- web Cam -->
+            <script >
+                const camera_display = document.getElementById("camera_display");
+                const player=document.getElementById("player");
+                let localMediaStream;
+                var chunks = [];
+                function handleSuccess(stream) {
+                    localMediaStream = stream;
+                    camera_display.srcObject = stream;
+
+                    var mediaRecorder = new MediaRecorder(stream);
+
+                    record = $('#start_rec')[0]
+                    record.onclick = function() {
+                        mediaRecorder.start();
+                        console.log(mediaRecorder.state);
+                        console.log("recorder started");
+                        record.style.background = "red";
+                        record.style.color = "black";
+                    }
+                    
+                    $('#staap_rec')[0].onclick = function() {
+                        mediaRecorder.stop();
+                        console.log(mediaRecorder.state);
+                        console.log("recorder stopped");
+                        record.style.background = "";
+                        record.style.color = "";
+                    }
+
+                    mediaRecorder.onstop = function(e) {
+                        
+                        localMediaStream.getVideoTracks()[0].stop();
+                        var blob = new Blob(chunks, { 'type' : 'video/mp4' });
+                        chunks = [];
+
+                        var videoURL = URL.createObjectURL(blob);
+                        console.log(videoURL)
+                        player.src=videoURL
+
+
+                        player.onloadedmetadata = function(){
+                            if(player.duration === Infinity) {
+                                console.log('here',player.duration)
+                                player.currentTime = 1e101;
+                                console.log(player.duration)
+                                player.ontimeupdate = function() {
+                                    this.ontimeupdate = ()=> {return;};
+                                    }
+                                }
+                            }
+                        player.play()
+
+
+                    }
+
+                    mediaRecorder.ondataavailable = function(e) {
+                        chunks.push(e.data);
+                    }
+
+
+                }
+                function handleError(error) {
+                    console.error('navigator.getUserMedia error: ', error);
+                }
+                const constraints = {audio: false,video: true};
+                var start_time;
+                $('#open_camera').on('click', function (){
+                    const state = this.innerHTML.toLowerCase() === 'open camera' ? true : false
+                    if (state) { 
+                        $('#recording_box').fadeIn('fast')
+                        this.innerHTML = 'Close camera'
+
+                        navigator.mediaDevices.getUserMedia(constraints).
+                        then(handleSuccess).catch(handleError);
+
+                        start_time = Date.now()
+                    } else {
+                        $('#recording_box').fadeOut('fast')
+                        this.innerHTML = 'Open camera'
+
+                        camera_display.pause();
+                        // localMediaStream.stop();
+                        localMediaStream.getVideoTracks()[0].stop();
+                        duration = Date.now()-start_time
+                        console.log(duration)
+                    }
+                })  
+
+            </script>
+            <!-- end web Cam -->
+
+
+            <script>
+                const videoElement = $('#video_display')[0]
+
+                const pose_landmarks = []
+                const hand_landmarks = []
+        
+                function onPoseResults(results) {
+                    if (!results.poseWorldLandmarks) {
+                        console.log('no Pose landmarks')
+                        return;
+                    }
+                    else{
+                        const frame = []
+                        results.poseWorldLandmarks.forEach(landmark => {
+                            const {x, y, z, visibility} = landmark
+                            frame.push(x, y, z, visibility)
+                        });
+                        pose_landmarks.push(frame)
+                        return;
+                    }
+                }
+                function onHandResults(results) {
+                    if (!results.multiHandWorldLandmarks) {
+                        console.log('no Hand landmarks')
+                        return;
+                    }
+                    else{
+                        frame_leftHand  = new Array(63).fill(0);
+                        frame_rightHand = new Array(63).fill(0);
+                        for(let i=0; i<results.multiHandedness.length;i++){
+                            if (results.multiHandedness[i].label === "Left"){
+                                frame_leftHand =[]
+                                results.multiHandWorldLandmarks[i].forEach(landmark => {
+                                    frame_leftHand.push(landmark.x, landmark.y, landmark.z)
+                                });
+                            }
+                            else{
+                                frame_rightHand =[]
+                                results.multiHandWorldLandmarks[i].forEach(landmark => {
+                                    frame_rightHand.push(landmark.x, landmark.y, landmark.z)
+                                });
+                            }
+                        }
+                        hand_landmarks.push([...frame_leftHand,...frame_rightHand])
+                        return;
+                    }
+                }
+                
+                const pose = new Pose({locateFile: (file) => {
+                    return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;
+                }});
+                pose.setOptions({
+                    modelComplexity: 2,
+                    smoothLandmarks: true,
+                    enableSegmentation: false,
+                    smoothSegmentation: true,
+                    minDetectionConfidence: 0.5,
+                    minTrackingConfidence: 0.5
+                });
+                pose.onResults(onPoseResults);
+
+                const hands = new Hands({locateFile: (file) => {
+                    return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
+                }});
+                hands.setOptions({
+                    maxNumHands: 2,
+                    modelComplexity: 1,
+                    minDetectionConfidence: 0.5,
+                    minTrackingConfidence: 0.5
+                });
+                hands.onResults(onHandResults);
+
+            </script>
+
+            <script> 
+            $('#log').on('click', function (){
+                console.log(pose_landmarks)
+                console.log(hand_landmarks)
+            })  
+            </script>
+
+        </main>
+
+    </body>
+</html>

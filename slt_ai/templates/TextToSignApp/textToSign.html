@@ -1,0 +1,416 @@
+<!--
+=========================================================
+* Soft UI Dashboard - v1.0.5
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard
+* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon"  href="{% static 'images/favicon.ico' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type='text/javascript' src="{% static 'js/urdutextbox.js' %}"></script>
+        <title>
+            PSL Translate - Text to Signs
+        </title>
+      
+        <!--     Fonts and icons     -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+        <!-- Nucleo Icons -->
+        <link href="https://appsrv1-147a1.kxcdn.com/soft-ui-dashboard-v105/css/nucleo-icons.css" rel="stylesheet" />
+        <link href="https://appsrv1-147a1.kxcdn.com/soft-ui-dashboard-v105/css/nucleo-svg.css" rel="stylesheet" />
+        <!-- Font Awesome Icons -->
+        <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+        <link href="https://appsrv1-147a1.kxcdn.com/soft-ui-dashboard-v105/css/nucleo-svg.css" rel="stylesheet" />
+        <!-- CSS Files -->
+        <link id="pagestyle" href="https://appsrv1-147a1.kxcdn.com/soft-ui-dashboard-v105/css/soft-ui-dashboard.css?v=1.0.5" rel="stylesheet" />
+
+        <!-- Specific CSS goes HERE -->
+        
+      
+    </head> 
+
+    <body class="g-sidenav-show bg-gray-100" style="min-width:420px">
+        {% csrf_token %}
+        <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps--active-y">
+
+            <!-- Navbar -->
+            <nav class="d-flex align-content-center" style="width:100%;">
+                <div class="col" style="width:50%">
+                    <a class="btn bg-gradient-primary mt-2 mb-2 p-2" target="_blank" style="width:100%;font-size:18px;border-radius:0;">Text ➡ PSL</a>
+                </div>
+                <div class="col" style="width: 50%">
+                    <a class="btn btn-outline-secondary bg-white shadow mt-2 mb-1 p-2" target="_self" href="/SignToText" style="width:100%;font-size:18px;border-radius:0;">PSL ➡ Text</a>
+                </div>
+            </nav>
+            <!-- End Navbar -->
+            
+            <div class="container-fluid py-2" style="width:100%">
+                <!-- Translator -->
+                <div class="row">
+                    <!-- Text Input -->
+                    <div class="card mx-1 p-1" style="width:61.8%; min-width:420px">
+                        <div class="col-xl-3 col-sm-6 justify-content-center" style="width: 100%">
+                            <!-- English -->
+                            <div class="card mx-1 mt-1 mb-2 p-3 shadow">
+                                <div class="row">
+                                    <!-- English Input -->
+                                    <div class="col-8">
+                                        <div class="d-flex flex-column h-100">
+                                            <h5 class="font-weight-bolder">English Sentence</h5>
+                                            <textarea id="english_text" class="mb-0" style="height: 100%;padding: 1%;" placeholder="Write your English sentence here.">kesi tabiyat hai aaaaap ki?</textarea>
+                                        </div>
+                                    </div>
+                                    <!-- Buttons -->
+                                    <div class="col-4 text-end">
+                                        <div class="col">
+                                            <div id="eng_btn_translate"   style="width:100%" class="card mb-1"><a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank"  style="width:100%;padding-left:2px;padding-right:2px;">Translate to Urdu</a></div>
+                                            <div id="eng_btn_stopwords"   style="width:100%" class="card mb-1"><a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank"  style="width:100%;padding-left:2px;padding-right:2px;">Remove Stopwords</a></div>
+                                            <div id="eng_btn_restructure" style="width:100%" class="card mb-1"><a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank"  style="width:100%;padding-left:2px;padding-right:2px;">Restructure like PSL</a></div>
+                                            <div id="eng_btn_substitute"  style="width:100%" class="card mb-1"><a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank"  style="width:100%;padding-left:2px;padding-right:2px;">Substitute available words</a></div>
+                                            <div id="eng_btn_create"      style="width:100%" class="card mb-0"><a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank"  style="width:100%;padding-left:2px;padding-right:2px;">Create Video</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- availableWords en -->
+                            <div id='availableWords_en_div'></div>
+                            <!-- Urdu -->
+                            <div class="card mx-1 mt-2 mb-1 p-3 shadow">
+                                <div class="row">
+                                    <!-- Urdu Input -->
+                                    <div class="col-8">
+                                        <div class="d-flex flex-column h-100" style="font-family:'Jameel Noori Nastaleeq';" dir="rtl">
+                                            <p style="font-size:26px;word-spacing:7px;"><b>اُردو جملہ</b></p>
+                                            <textarea id="urdu_text" class="mb-0" style="height:100%;padding: 1%; font-size: 22px;word-spacing:7px;" placeholder="یہاں پر اُردو جملہ لکھیں۔"></textarea>
+                                        </div>
+                                    </div>
+                                    <!-- Buttons -->
+                                    <div class="col-4">
+                                        <div class="col">
+                                            <div id='urd_btn_translate'   style="width:100%;" class="mb-1"><a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank"  style="width:100%; padding-left:2px; padding-right:2px;">Translate to English</a></div>
+                                            <div id="urd_btn_stopwords"   style="width:100%;" class="mb-1"><a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank"  style="width:100%; padding-left:2px; padding-right:2px;">Remove Stopwords</a></div>
+                                            <div id="urd_btn_restructure" style="width:100%;" class="mb-1"><a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank"  style="width:100%; padding-left:2px; padding-right:2px;">Restructure like PSL</a></div>
+                                            <div id="urd_btn_substitute"  style="width:100%;" class="mb-1"><a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank"  style="width:100%; padding-left:2px; padding-right:2px;">Substitute available words</a></div>
+                                            <div id="urd_btn_create"      style="width:100%;" class="mb-0"><a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank"  style="width:100%; padding-left:2px; padding-right:2px;">Create Video</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                            <!-- availableWords ur -->
+                            <div id='availableWords_ur_div'></div>
+                        </div>
+                    </div>
+                    <!-- End Text Input -->
+
+                    <!-- Video Output-->
+                    <div class="card mx-1 p-1" style="width:auto;max-height:90vh;">  
+                        <div class="col">
+                            <div class="card ">
+                                <!-- Video Header -->
+                                <div id="video_header_div" class="card-header pb-0">
+                                    <h5 id='video_heading' class="font-weight-bolder">PSL Video Sentence</h5>
+                                    <div id="video_header_sentence" style="font-size:medium;word-spacing: 6px;">
+                                    </div>
+                                </div>
+                                <!-- Video player-->
+                                <div style="width:100%;">
+                                    <div class="card-body p-3" style="aspect-ratio:9/16; max-height:70vh; margin: auto;">
+                                        <video id='video_player' style="display:block; box-sizing: border-box; height:100%; width:100%;" controls>
+                                            <source id="video_source" src="" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Video Output-->
+                </div>
+                <!-- End Translator -->
+
+                <!-- Footer -->
+                <footer class="footer pt-3  ">
+                    <div class="container-fluid">
+                        <div class="row align-items-center justify-content-lg-between">
+                            <div class="col-lg-6 mb-lg-0 mb-4" style="width: 100%">
+                                <div class="copyright text-center text-sm text-muted text-lg-start">
+                                    Made by the collaboration between people at Faculty of Computing and Information Technology, University of the Punjab &amp; Hamza Foundation Academy for the Deaf.<br><br><br>Contact<br>mdsriqb@gmail.com
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End Footer -->
+            </div>
+            
+        </main>
+
+        <!-- Urdu Phonetic Keyboard (a=ا,b=ب,...) -->
+        <!-- #-$-%-* disable while alt key held down, enable in english box *-%-$-# -->
+        <script type='text/javascript'>MakeTextBoxUrduEnabled(urdu_text)</script>
+        <script type='text/javascript'>
+            ur = $('#urdu_text').attr('placeholder')
+            $('#urdu_text').attr('placeholder',ur+"\n"+"ʸᵃ ᵘᵖᵉʳ ᴱⁿᵍˡᶦˢʰ ʷᵃˡʸ ᵈᶦᵇʸ ᵐᵉ ᴿᵒᵐᵃⁿ ᵁʳᵈᵘ ᵐᵉ ˡᶦᵏʰ ᵏʳ                   \'ᵀʳᵃⁿˢˡᵃᵗᵉ ᵗᵒ ᵁʳᵈᵘ\' ᵏᵃ ᵇᵘᵗᵗᵒⁿ ᵈᵇᵃᵉᶦⁿ")
+        </script>
+
+        <!-- Google Translate English & Urdu -->
+        <script type='text/javascript'>
+            $('#eng_btn_translate').click(function(){
+                if ($('#english_text').val() != ""){
+                    $.ajax({
+                        type:'GET',
+                        url:"{% url 'translate' %}",
+                        data:{
+                            'txt': $('#english_text').val(),
+                            'src': 'en',
+                            'tgt': 'ur'
+                        },
+                        success:function(result){
+                            // need to add Undo/Redo functionality
+                            $('#urdu_text').val(result['translation']);
+                        }
+                    });
+                }
+            });
+            $('#urd_btn_translate').click(function(){
+                if ($('#urdu_text').val() != ""){
+                    $.ajax({
+                        type:'GET',
+                        url:"{% url 'translate' %}",
+                        data:{
+                            'txt': $('#urdu_text').val(),
+                            'src': 'ur',
+                            'tgt': 'en'
+                        },
+                        success:function(result){
+                            // need to add Undo/Redo functionality
+                            $('#english_text').val(result['translation']);
+                        }
+                    });
+                }
+            });
+        </script>
+
+        <!-- Remove Stopwords (maybe highlight stopwords on hover <div contenteditable>) -->
+        <script type='text/javascript'>
+            eng_stopwords = ['is', 'am' , 'are', 'the']
+            urd_stopwords = ['ہے', 'ہوں', 'ہیں', 'نے','لیا']
+
+            $('#eng_btn_stopwords').on('click', {id:'english_text',stopwords:eng_stopwords}, remove);
+            $('#urd_btn_stopwords').on('click', {id:'urdu_text'   ,stopwords:urd_stopwords}, remove);
+ 
+            function remove(event){
+                text = $('#'+event.data.id).val()
+
+                words = text.split(' ')
+                for(i=0;i<words.length;i++){
+                    word = words[i].replace('.',"").replace('?',"").replace(',',"").replace('۔',"").replace('؟',"").replace('،',"");
+                    
+                    if(event.data.stopwords.includes(word.toLowerCase())) {
+                        words[i]=words[i].replace(word,"");
+                    }
+                }
+                $('#'+event.data.id).val(words.join(' '))
+            }
+        </script>
+        
+        <!-- Restructure like PSL -->
+        <script type='text/javascript'>
+            $('#eng_btn_restructure').click(function(){
+                if ($('#english_text').val() != ""){
+                    collapse_whitespace('english')
+                    $.ajax({
+                        type:'GET',
+                        url:"{% url 'restructure' %}",
+                        data:{
+                            'txt': $('#english_text').val(),
+                            'lan': 'en'
+                        },
+                        success:function(result){
+                            // need to add Undo/Redo functionality
+                            $('#english_text').val(result['modified_txt']);
+                        }
+                    });
+                }
+            });
+            $('#urd_btn_restructure').click(function(){
+                if ($('#urdu_text').val() != ""){
+                    collapse_whitespace('urdu')
+                    $.ajax({
+                        type:'GET',
+                        url:"{% url 'restructure' %}",
+                        data:{
+                            'txt': $('#urdu_text').val(),
+                            'lan': 'ur',
+                        },
+                        success:function(result){
+                            // need to add Undo/Redo functionality
+                            $('#urdu_text').val(result['modified_txt']);
+                        }
+                    });
+                }
+            });
+        </script>
+
+        <!-- Substitute available words -->
+        <script type='text/javascript'>
+            $('#eng_btn_substitute').click(function(){
+                if ($('#english_text').val() != ""){
+                    collapse_whitespace('english')
+                    $('#availableWords_en_div').html('');
+                    $('#availableWords_en_div').attr('dir','ltr')
+                    $('#availableWords_en_div').attr('style',"")
+                    $.ajax({
+                        type:'GET',
+                        url:"{% url 'substitute' %}",
+                        data:{
+                            'txt': $('#english_text').val(),
+                            'lan': 'en'
+                        },
+                        success:function(result){
+                            $('#availableWords_en_div').html(result);
+                            old_style = $("a[name=aw_uword_en]").attr('style')
+                            $("a[name=aw_uword_en]").attr('style',old_style+'font-size: large;' )
+                            old_style = $("a[name^=aw_subBtn_en]").attr('style')
+                            $("a[name^=aw_subBtn_en]").attr('style',old_style+'font-size: medium;text-transform:none;font-weight:400;' )
+                        }
+                    });
+                }
+            });
+            $('#urd_btn_substitute').click(function(){
+                if ($('#urdu_text').val() != ""){
+                    collapse_whitespace('urdu')
+                    $('#availableWords_ur_div').html('');
+                    $('#availableWords_ur_div').attr('dir','rtl')
+                    $('#availableWords_ur_div').attr('style',"font-family:'Jameel Noori Nastaleeq'; ")
+                    $.ajax({
+                        type:'GET',
+                        url:"{% url 'substitute' %}",
+                        data:{
+                            'txt': $('#urdu_text').val(),
+                            'lan': 'ur',
+                        },
+                        success:function(result){
+                            $('#availableWords_ur_div').html(result);
+
+
+                            old_style = $("div[name=aw_uword_ur]").attr('style')
+                            $("div[name=aw_uword_ur]").attr('style',old_style+'font-size: x-large;' )
+
+                            old_style = $("a[name^=aw_subBtn_ur]").attr('style')
+                            $("a[name^=aw_subBtn_ur]").attr('style',old_style+'font-size: x-large;font-weight: 100;' )
+
+                            $("div[name^=aw_noSub]").html('کوئی اچھا متبادل نہیں ملا، انگلیوں سے ہجے بنائے جائیں گے۔')
+                            old_style = $("div[name=aw_noSub]").attr('style')
+                            $("div[name=aw_noSub]").attr('style',old_style+'font-size: x-large;' )
+                        }
+                    });
+                }
+            });
+        </script>
+
+        <!-- Create Video -->
+        <script type='text/javascript'>
+            $('#eng_btn_create').click(function(){
+                if ($('#english_text').val() != ""){
+                    collapse_whitespace('english')
+                    $('#video_header_div').fadeOut();
+                    $('#video_heading')        .text('Rendering Video ⏳')
+                    $('#video_heading')        .attr('style',"")
+                    $('#video_heading')        .attr('dir',"ltr")
+                    $('#video_header_sentence').attr('style',"font-size:medium;")
+                    $('#video_header_sentence').attr('dir',"ltr")
+                    $('#video_header_sentence').html('Please wait for a few moments...')
+                    $('#video_header_div').fadeIn ();
+                    $.ajax({
+                        type:'GET',
+                        url:"{% url 'create' %}",
+                        data:{
+                            'txt': $('#english_text').val(),
+                            'lan':'en',
+                            'res':'144'//,
+                            //'ign':'1080p,720p,540p,360p,270p'
+                        },
+                        success:function(result){
+                            $('#video_header_div').fadeOut('fast');
+                            $('#video_heading').text('Rendered Video:')
+                            $('#video_header_sentence').html(result['sentence'])
+                            $('#video_header_div').fadeIn('fast');
+                            $('#video_source').attr('src', result['video'])
+                            $('#video_player').get(0).load()
+                            $('#video_player').get(0).play()
+                        },
+                        error:function(jqXHR, exception){
+                            $('#video_header_div').fadeOut('fast');
+                            $('#video_heading').text('Could not render video ☹️')
+                            if (jqXHR.status == 500) {
+                                $('#video_header_sentence').html(exception)
+                                
+                            }
+                            $('#video_header_div').fadeIn('fast');
+                        }
+                    });
+                }
+            });
+            $('#urd_btn_create').click(function(){
+                if ($('#urdu_text').val()!=''){
+                    collapse_whitespace('urdu')
+                    $('#video_header_sentence').attr('style',"font-family:'Jameel Noori Nastaleeq'; font-size:x-large; word-spacing:6px;")
+                    $('#video_header_sentence').attr('dir',"rtl")
+                    $('#video_header_sentence').html('چند لمحے انتظار کریں۔۔۔')
+                    $('#video_heading')        .attr('style',"font-family:'Jameel Noori Nastaleeq'; font-size :xx-large; word-spacing:6px;")
+                    $('#video_heading')        .attr('dir',"rtl")
+                    $('#video_heading')        .text('ویڈیو تیار کی جا رہی ہے ⏳')
+                    $.ajax({
+                        type:'GET',
+                        url:"{% url 'create' %}",
+                        data:{
+                            'txt': $('#urdu_text').val(),
+                            'lan':'ur',
+                            'res':'144'
+                        },
+                        success:function(result){
+                            $('#video_header_div').fadeOut('fast');
+                            $('#video_heading').text('تیارکردہ ویڈیو:')
+                            $('#video_header_sentence').html(result['sentence'])
+                            $('#video_header_div').fadeIn('fast');
+                            $('#video_source').attr('src',  result['video'])
+                            $('#video_player').get(0).load()
+                            $('#video_player').get(0).play()
+                        },
+                        error:function(jqXHR, exception){
+                            $('#video_header_div').fadeOut('fast');
+                            $('#video_heading').text('ویڈیو تیار نہیں ہو سکی۔☹️')
+                            if (jqXHR.status == 500) {
+                                $('#video_header_sentence').html(exception)
+                                
+                            }
+                            $('#video_header_div').fadeIn('fast');
+                        }
+                    });
+                }
+            });
+        </script>
+
+        <script>
+            function collapse_whitespace(lang){
+                box_id = '#'+lang+'_text'
+                clean = $(box_id).val().replace(/\s+/g,' ')
+                $(box_id).val(clean)
+            }
+        </script>
+
+    </body>
+</html>

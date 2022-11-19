@@ -1,0 +1,840 @@
+a	,	
+b	,	
+c	,	
+d-A	,	d-a	,	a
+d-B	,	d-b	,	b
+d-C	,	d-c	,	c
+d-D	,	d-d	,	d
+d-E	,	d-e	,	e
+d-F	,	d-f	,	f
+d-G	,	d-g	,	g
+d-H	,	d-h	,	h
+d-I	,	d-i	,	i
+d-J	,	d-j	,	j
+d-K	,	d-k	,	k
+d-L	,	d-l	,	l
+d-M	,	d-m	,	m
+d-N	,	d-n	,	n
+d-O	,	d-o	,	o
+d-P	,	d-p	,	p
+d-Q	,	d-q	,	q
+d-R	,	d-r	,	r
+d-S	,	d-s	,	s
+d-T	,	d-t	,	t
+d-U	,	d-u	,	u
+d-V	,	d-v	,	v
+d-W	,	d-w	,	w
+d-X	,	d-x	,	x
+d-Y	,	d-y	,	y
+d-Z	,	d-z	,	z
+d	,	
+e	,	
+f	,	
+g	,	
+h	,	
+i	,	
+j	,	
+k	,	
+l	,	
+m	,	
+n	,	
+o	,	
+p	,	
+q	,	
+r	,	
+s	,	
+t	,	
+u	,	
+v	,	
+w	,	
+x	,	
+y	,	
+z	,	
+ؑ	,	ؑ
+آ	,	آ
+آؤ	,	come(آؤ)
+آؤں	,	come(آؤں)
+آئس کریم	,	icecream	,	ice-cream
+آئی	,	came(آئی)
+آئیں	,	come(آئیں)
+آئے	,	came(آئے)
+آب پاشی	,	irrigation
+آبادی	,	population
+آتش فشاں	,	volcano
+آج	,	today
+آخری	,	last
+آدمی	,	man
+آدھا گھنٹہ	,	half-hour	,	halfhour	,	half-an-hour
+آرام	,	rest(آرام)
+آرٹ	,	art
+آزاد	,	free(آزاد)
+آزادی	,	freedom
+آسان	,	easy
+آسمان	,	sky
+آسٹریلیا	,	australia
+آفس	,	office
+آلات	,	tools
+آلو	,	potato
+آم	,	mango
+آمدورفت	,	transportation
+آندھی	,	storm
+آٹا	,	flour
+آٹھ	,	eight	,	8	,	۸
+آپ کا نام کیا ہے؟	,	what-is-your-name
+آپ	,	you(آپ)
+آیا	,	came(آیا)
+آیت	,	verse
+ا	,	ا
+ائیر پورٹ	,	airport
+اب	,	now(اب)
+ابھی	,	now(ابھی)	,	right-now	,	rightnow
+اتوار	,	sunday
+اجازت	,	permission
+اخبار	,	newspaper
+ادب	,	respect
+ادرک	,	ginger
+استاد	,	teacher
+استعمال	,	use
+استقبال	,	welcome
+اسلام آباد	,	islamabad
+اسلامیات	,	islamiyat
+اسمبلی	,	assembly
+اسٹابری	,	strawberry
+اشتہار	,	advertisement
+اطاعت	,	obedience
+افسوس	,	pity	,	sad
+افغانستان	,	afghanistan
+افواہ	,	rumor
+الارم	,	alarm
+الحمراء	,	alhamra
+الفاظ	,	words	,	word
+اللہ	,	allah
+الماری	,	cupboard	,	closet
+الیکشن	,	election
+امام	,	imam
+امانت	,	guardianship
+امتحان	,	examination	,	exams	,	exam
+امرود	,	guava
+امریکہ	,	america
+امیر	,	rich
+انار کلی	,	anarkali	,	anarkali-market
+انار	,	pomegranate
+انتظار	,	wait
+انناس	,	pineapple
+انڈا	,	egg
+انڈیا	,	india
+انگلش	,	english
+انگلینڈ	,	england
+انگور	,	grape
+اور	,	and
+اَن پڑھ	,	illiterate
+اُداس	,	
+اُدھار	,	loan
+اُردو	,	urdu
+اُصول	,	principle
+اُلو	,	owl
+اُونٹ	,	camel
+اپریل	,	april
+اپنا کام کرو۔	,	do-your-work
+اپنا	,	own(اپنا)
+اپنی	,	own(اپنی)
+اپنے	,	own(اپنے)
+اچانک	,	sudden
+اچھا	,	good
+اکتوبر	,	october
+اگست	,	august
+اگلا	,	next
+ایران	,	iran
+ایمان	,	faith
+ایمبولینس	,	ambulance
+ایمرجنسی	,	emergency
+ایڈریس	,	address
+ایک لاکھ	,	one-lakh	,	100000	,	۱۰۰۰۰۰
+ایک کروڑ	,	one-crore	,	10000000	,	۱۰۰۰۰۰۰۰
+ایک ہزار	,	one-thousand	,	1000	,	۱۰۰۰
+ایک	,	one	,	1	,	۱
+ب	,	ب
+بات	,	talk
+بادشاہی مسجد	,	badshahi-mosque
+بارش	,	rain
+بازار	,	market
+باغ	,	garden
+بال پوائنٹ	,	ballpoint
+بانی	,	founder
+باپ	,	father
+بحری جہاز	,	ship
+بدمعاش	,	rascal
+بدھ	,	wednesday
+براؤن	,	brown
+براعظم	,	continent
+برگر	,	burger
+بریک	,	break(وقفہ)
+بس سٹاپ	,	bus-stop	,	busstop
+بس	,	bus
+بسکٹ	,	biscuit
+بطخ	,	duck
+بغاوت	,	rebellion
+بلوچستان	,	balochistan
+بلی	,	cat
+بنانا	,	create
+بند	,	closed	,	close(بند)
+بندر	,	monkey
+بنک	,	bank(بنک)
+بنگلہ دیش	,	bangladesh
+بنیاد	,	foundation
+بوتل	,	bottle
+بوڑھا	,	old-man	,	oldman
+بوڑھی	,	old-woman	,	oldwoman
+بک شاپ	,	bookshop
+بکرابکری	,	goat
+بکرے کا گوشت	,	mutton
+بکواس	,	nonsense
+بھائی	,	brother
+بھابھی	,	sister-in-law(بھابھی)
+بھانجا	,	nephew(بھانجا)
+بھانجی	,	niece(بھانجی)
+بھتیجا	,	nephew(بھتیجا)
+بھتیجی	,	niece(بھتیجی)
+بھنڈی	,	okra
+بھیانک	,	terrifying
+بہار	,	spring(بہار)
+بہانہ	,	excuse
+بہت	,	very
+بہن	,	sister
+بیمار	,	sick
+بینگن	,	eggplant
+بیوی	,	wife
+بیٹا	,	son
+بیٹی	,	daughter
+بیگ	,	bag
+بے حال	,	unwell
+بے چین	,	anxious
+بےوقوف	,	fool
+ت	,	ت
+تاریخ	,	date(تاریخ)
+تاریخی مقامات	,	historic-places	,	historic-sites
+تبدیل	,	change
+تبلیغ	,	preach
+تربوز	,	watermelon
+ترکی	,	turkey
+تصویر	,	picture
+تلاش	,	search
+تم آئو۔	,	you-come
+تم	,	you(تم)
+تماشہ	,	spectacle
+تمھاری	,	your(تمھاری)
+تمہارا	,	your(تمہارا)
+تمہارے	,	your(تمہارے)
+تمہیں	,	you(تمہیں)
+توحید	,	monotheism
+تک	,	till
+تکلیف	,	pain	,	ache
+تھا	,	was(تھا)
+تھی	,	was(تھی)
+تھے	,	were
+تیز	,	fast
+تین	,	three	,	3	,	۳
+ث	,	ث
+ثواب	,	reward(ثواب)
+ج	,	ج
+جاؤ	,	go(جاؤ)
+جاؤں	,	go(جاؤں)
+جائیں	,	go(جائیں)
+جائے	,	go(جائے)
+جاسوس	,	spy
+جامن	,	jamun	,	jambul
+جامنی	,	purple
+جاپان	,	japan
+جاگنا	,	wake
+جج	,	judge(جج)
+جرمانہ	,	penalty
+جشن	,	celebration
+جلدی	,	quick
+جلوس	,	procession
+جمع	,	add
+جمعرات	,	thursday
+جمعہ	,	friday
+جنت	,	heaven
+جنوری	,	january
+جنگل	,	forest	,	jungle
+جنگی جہاز	,	fighter-jet
+جواب	,	answer
+جوتا	,	shoe
+جوس	,	juice
+جولائی	,	july
+جون	,	june
+جگہ	,	place
+جھوٹ	,	lie
+جہاد	,	jihad
+جہلم	,	jhelum
+جہنم	,	hell
+جینز کی پینٹ	,	jeans-pants
+ح	,	ح
+حج	,	hajj
+حدیث	,	hadith
+حساب	,	account
+حضرت آدمؑ	,	hazrat-adam	,	adam
+حضرت ابوبکر ‏ؐ ؓ	,	hazrat-abu-bakr	,	hazrat-abubakr
+حضرت حواؑ	,	hazrat-eve	,	eve
+حضرت عثمان ؓ	,	hazrat-usman	,	hazrat-uthman
+حضرت علی ؓ	,	hazrat-ali
+حضرت عمر ؓ	,	hazrat-omar	,	hazrat-umer	,	hazrat-omer-farooq	,	hazrat-umer-farooq
+حضرت محمدؐ	,	hazrat-muhammad	,	hazrat-mohammad
+حق	,	rights
+خ	,	خ
+خالو	,	uncle(خالو)
+خالہ	,	aunt(خالہ)
+خاندان	,	family
+خراب	,	defective
+خربوذہ	,	melon
+خرگوش	,	rabbit
+خزاں	,	autumn
+خواب	,	dream
+خواہش	,	desire	,	wish
+خوبانی	,	apricot
+خوبصورت	,	beautiful
+خودغرض	,	selfish
+خوش کلامی	,	happy-talk	,	happytalk
+خوش	,	happy
+خوشگوار	,	pleasant
+خیبر پختو نخواہ	,	khyber-pakhtunkhwa	,	khyber-pakhtun-khwa	,	khyberpakhtunkhwa
+د	,	د
+دادا	,	grandfather(دادا)
+دادی	,	grandmother(دادی)
+دال	,	lentil
+درخت	,	tree
+درخواست	,	application(درخواست)
+درمیان	,	between	,	middle
+دریا	,	river
+دس ہزار	,	ten-thousand	,	10000	,	۱۰۰۰۰
+دس	,	ten	,	10	,	۱۰
+دسمبر	,	december
+دشمنی	,	hostility
+دعا1	,	allah-have-mercy-on-us-amen	,	dua1	,	prayer1
+دعا2	,	open-the-knot-of-our-tongue	,	dua2	,	prayer2
+دعا3	,	increase-our-knowledge-amen	,	dua3	,	prayer3
+دعوت	,	feast
+دلچسپی	,	interest
+دن	,	day
+دنیا	,	earth
+دو	,	two	,	2	,	۲
+دوائی	,	medicine
+دوبئی	,	dubai
+دوبارہ	,	again
+دودھ	,	milk
+دوست	,	friend
+دولت	,	wealth
+دوپٹہ	,	scarf
+دوپہر	,	afternoon
+دوکان	,	shop
+دُور	,	far	,	distant
+دھنیا	,	coriander
+دہی بھلے	,	dahi-bhally
+دہی	,	yogurt
+دینا	,	give
+دیکھا	,	saw(دیکھا)
+دیکھو	,	look(دیکھو)
+دیکھوں	,	see(دیکھوں)
+دیکھی	,	saw(دیکھی)
+دیکھیں	,	watch(دیکھیں)
+دیکھے	,	saw(دیکھے)
+ذ	,	ذ
+ذلت	,	humiliation
+ذمہ دار	,	responsible
+ر	,	ر
+رات	,	night
+راولپنڈی	,	rawalpindi
+ربڑ	,	rubber
+رحم	,	mercy
+رزلٹ	,	result
+رسول	,	apostle
+رش	,	crowd
+رشتے دار	,	relative
+رشوت	,	bribery
+رنگ	,	color
+روزہ	,	fasting
+روٹی	,	roti
+رکشہ	,	rickshaw
+رہا	,	stay(رہا)
+رہی	,	stay(رہی)
+رہیں	,	stay(رہیں)
+رہے	,	stay(رہے)
+رہو	,	stay(رہو)
+ریسٹورینٹ	,	restaurant
+ریلوے اسٹیشن	,	railway-station	,	railwaystation	,	train-station	,	trainstation
+ز	,	ز
+زرافہ	,	giraffe
+زمین	,	
+زکوٰۃ	,	zakat
+س	,	س
+سائنس	,	science
+سات	,	seven	,	7	,	۷
+ساتھ	,	with	,	together
+سال	,	year
+سالگرہ	,	birthday
+ساہیوال	,	sahiwal
+سایہ	,	shadow	,	shade
+سب	,	all	,	every
+سبزیاں	,	vegetables
+ستارے	,	stars
+ستمبر	,	september
+سجاوٹ	,	decoration
+سربراہ	,	chief
+سردی	,	cold
+سرگودھا	,	sargodha
+سزا	,	punishment
+سست	,	lazy
+سعودی عرب	,	saudi-arabia
+سفید	,	white
+سلامت	,	safe
+سمندر	,	sea
+سموسہ	,	samosa
+سندھ	,	sindh
+سنسان	,	deserted
+سو	,	one-hundred	,	100	,	۱۰۰
+سوال	,	question
+سورج	,	sun
+سونا	,	gold
+سوپ	,	soup
+سٹاف روم	,	staffroom
+سٹپلر	,	stapler
+سٹیڈیم	,	stadium
+سپاہی	,	sepoy
+سپورٹس	,	sports
+سچ	,	truth
+سڑک	,	road
+سکول کینٹین	,	school-canteen	,	school-cafeteria	,	school-cafe	,	schoolcafeteria
+سکول	,	school
+سکون	,	calmness
+سکیل	,	scale
+سکینڈ	,	second
+سیالکوٹ	,	sialkot
+سیاہی	,	ink
+سیب	,	apple
+سیر	,	stroll
+سے	,	from
+ش	,	ش
+شادی	,	wedding
+شارپنر	,	sharpener
+شاعر	,	poet
+شام	,	evening
+شامل	,	included	,	contains
+شاید	,	maybe
+شربت	,	beverage
+شرم	,	shame
+شرمندگی	,	embarrassment
+شروع	,	start
+شرٹ	,	shirt
+شریف	,	gentleman
+شناختی کارڈ	,	identification-card	,	id-card	,	cnic	,	cnic-card
+شور	,	noise
+شوہر	,	husband
+شکایت	,	complaint
+شہر	,	city
+شیخوپورہ	,	sheikhupura
+شیر	,	lion
+شیطان	,	satan	,	devil
+ص	,	ص
+صبح	,	morning
+صلح	,	reconcile
+صوبہ	,	province
+ض	,	ض
+ضد	,	stubbornness
+ضروری	,	necessary
+ط	,	ط
+طالب علم	,	student
+طوطا	,	parrot
+ظ	,	ظ
+ظلم	,	cruelty
+ظہر	,	zuhr
+ع	,	ع
+عادت	,	habit
+عجائب گھر	,	museum
+عراق	,	iraq
+عزت	,	
+عشاء	,	isha
+عصر	,	asr
+عقل مند	,	wise
+علامہ اقبال	,	allama-iqbal
+عمر	,	age
+عمل	,	process
+عوام	,	people
+عورت	,	woman	,	lady	,	female
+عیسائی	,	christian
+غ	,	غ
+غرور	,	arrogance
+غریب	,	poor
+غصہ	,	anger
+غلط	,	wrong
+غمگین	,	grieved	,	heart-broken	,	heartbroken
+غور	,	consider
+ف	,	ف
+فائدہ	,	benefit
+فارغ	,	finished
+فتح	,	victory
+فجر	,	fajr
+فخر	,	pride
+فراڈ	,	fraud
+فراک	,	frock
+فرشتہ	,	angel
+فروری	,	february
+فضول خرچ	,	extravagant
+فضول	,	wasteful
+فقیر	,	beggar
+فلم	,	film
+فوجی	,	soldier
+فکر	,	worry
+فیشن ایبل	,	fashionable
+فیشن	,	fashion
+فیصل آباد	,	faisalabad
+فیصل مسجد	,	faisal-mosque
+فیل	,	fail
+فیکٹری	,	factory
+ق	,	ق
+قائداعظم	,	quaid-e-azam
+قانون	,	law
+قبر	,	grave
+قبرستان	,	cemetery
+قرآن	,	quran
+قسمت	,	fate
+قلعہ	,	fort
+قمیض	,	kameez
+قوس قزح	,	rainbow
+قوم	,	nation
+ل	,	ل
+لائبریری	,	library
+لال مرچ	,	red-chilli
+لال	,	red
+لالچی	,	greedy
+لاہور	,	lahore
+لطیفہ	,	joke
+لفظ	,	
+لوگ	,	
+لوہا	,	iron
+لڑکا	,	boy
+لڑکی	,	girl
+لہسن	,	garlic
+لیبرٹی	,	liberty(لیبرٹی)
+لیموں	,	lemon
+لیے	,	for
+م	,	م
+مئی	,	may(مئی)
+مارچ	,	march(مارچ)
+مالٹا	,	orange(مالٹا)
+مالک	,	owner
+ماموں	,	uncle(ماموں)
+مانگنا	,	beg
+مانیٹر	,	monitor
+ماں	,	mother
+متضاد	,	contradictory	,	antonym
+مجموعہ	,	collection
+مجھے	,	me
+محنت	,	hardwork
+مختلف	,	different	,	various
+مدد	,	help
+مذکر	,	masculine
+مرد	,	
+مرغی کا گوشت	,	chicken-meat
+مرغی	,	chicken
+مری	,	murree
+مریض	,	patient(مریض)
+مزار	,	shrine
+مزدور	,	laborer
+مزہ	,	fun
+مسجد	,	mosque
+مسلمان	,	muslim
+مشتمل	,	
+مشورہ	,	advice
+مشکل	,	difficult
+مشہور	,	famous
+مصروف	,	busy
+مصیبت	,	trouble
+معاشرتی علوم	,	social-studies	,	pakistan-studies	,	pak-study	,	socialstudies
+معاشرہ	,	society
+معاف	,	sorry
+معلومات	,	information
+مغرب	,	west
+مقابلہ	,	competition
+مقصد	,	purpose
+ملتان	,	multan
+ملک	,	country
+ممانی	,	aunt(ممانی)
+منٹ	,	minute
+منگل	,	tuesday
+مور	,	peacock
+موسم	,	weather
+مولی	,	radish
+مونث	,	feminine
+موٹرسائیکل	,	motorcycle
+مٹھائی	,	sweets
+مٹینگ	,	meeting
+مچھلی	,	fish
+مکمل	,	complete
+مکھن	,	butter
+مگرمچھ	,	crocodile
+مہنگائی	,	inflation
+مہینہ	,	month
+میدان	,	ground
+میرا	,	my(میرا)
+میری	,	my(میری)
+میرے	,	my(میرے)
+میز	,	table
+مینارِ پاکستان	,	minar-e-pakistan
+مینڈک	,	frog
+میں آئوں۔	,	i-come
+میں(i)	,	i(میں)
+میں(in)	,	in
+ن	,	ن
+ناراض	,	angry(ناراض)
+نارنجی	,	orange(نارنجی)
+ناریل	,	coconut
+نام	,	name
+نان	,	naan
+نانا	,	grandfather(نانا)
+نانی	,	grandmother(نانی)
+نزدیک	,	near
+نسل	,	ethnicity
+نظام	,	system
+نظر انداز	,	ignore
+نظم و ضبط	,	disciplane
+نعمت	,	blessing
+نفرت	,	hate
+نقصان	,	damage
+نقل	,	duplicate
+نمائش	,	exhibition
+نماز	,	salat
+نمک	,	salt
+نو	,	nine	,	9	,	۹
+نواب	,	nawab
+نومبر	,	november
+نوڈلز	,	noodles
+نوکر	,	servent
+نہر	,	canal
+نہیں	,	no
+نیا	,	new
+نیلا	,	blue
+نے	,	by
+و	,	و
+واحد	,	single
+واش روم	,	washroom
+ورزش	,	exercise
+وزیراعظم	,	prime-minister
+وعدہ	,	promise
+وقت کی پابندی	,	punctuality
+وقت	,	time
+ووٹ	,	vote
+وکیل	,	lawyer
+وہ آئی۔	,	she-came
+وہ آئے۔	,	they-came
+وہ آیا۔	,	he-came
+وہ گیا تھا۔	,	he-went
+وہ	,	they
+وہاں	,	there
+وین	,	van
+ٹ	,	ٹ
+ٹائم ٹیبل	,	timetable
+ٹافی	,	toffee
+ٹر یکٹر	,	tractor
+ٹرین	,	train(ریل-گاری)
+ٹماٹر	,	tomato
+ٹی وی	,	tv	,	television
+ٹیکس	,	tax
+پ	,	پ
+پاس	,	pass(پاس)
+پالک	,	spinach
+پانچ سو	,	five-hundred	,	500	,	۵۰۰
+پانچ	,	five	,	5	,	۵
+پاکستان	,	pakistan
+پتا	,	leaf
+پتلون	,	pants
+پر	,	on	,	at
+پرسوں	,	day-after-tomorrow
+پرنسپل	,	principal
+پروگرام	,	program
+پریشان	,	worried
+پسند	,	like
+پشاور	,	peshawar
+پنجاب	,	punjab
+پنسل	,	pencil
+پودے	,	plants
+پوسٹ آفس	,	post-office
+پھل	,	fruit
+پھول	,	flower
+پھوپھا	,	uncle(پھوپھا)
+پھوپھی	,	aunt(پھوپھی)
+پہاڑ	,	mountain
+پہلا	,	first
+پہلے	,	before
+پیاز	,	onion
+پیاس	,	thirst
+پیر	,	monday
+پیغمبر	,	prophet
+پیلا	,	yellow
+پین	,	pen
+چ	,	چ
+چئیرمین	,	chairman
+چائنا مٹی	,	china-clay
+چائے	,	tea
+چار	,	four	,	۴
+چالاک	,	cunning
+چاند	,	moon
+چاندی	,	silver
+چاول	,	rice
+چست	,	fit
+چشمہ	,	spring(چشمہ)
+چغلی	,	backbiting
+چلنا	,	walk
+چنا چاٹ	,	chana-chaat
+چند	,	few
+چوبرجی	,	chauburji
+چور	,	thief
+چونے کا پتھر	,	limestone
+چوکیدار	,	security-guard
+چوہا	,	rat
+چوہدری	,	chaudhary
+چپس	,	chips
+چچا	,	uncle(چچا)
+چچی	,	aunt(چچی)
+چڑیا گھر	,	zoo
+چڑیا	,	sparrow
+چکا	,	has(چکا)
+چکنی مٹی	,	clay
+چکوال	,	chakwal
+چکی	,	has(چکی)
+چکے	,	have
+چھ	,	six	,	6	,	۶
+چھاؤں	,	
+چھٹی	,	holiday
+چھیننا	,	snatch
+چین	,	china
+چینی	,	sugar
+ڈ	,	ڈ
+ڈائری	,	diary
+ڈاکو	,	dacoit
+ڈاکٹر	,	doctor
+ڈبل روٹی	,	bread
+ڈرامہ	,	drama
+ڈھونڈنا	,	find
+ڈیوٹی	,	duty
+ڑ	,	ڑ
+ژ	,	ژ
+ژالہ باری	,	snowfall	,	hailstorm
+ک	,	ک
+کا	,	of(کا)
+کار	,	car
+کارٹون	,	cartoon
+کافر	,	infidel
+کافی	,	coffee
+کالا	,	black
+کالج	,	college
+کام چور	,	work-shy	,	workshy
+کام	,	work
+کامیابی	,	success
+کاپی	,	notebook
+کب	,	when
+کباب	,	kebab
+کبوتر	,	pigeon
+کتا	,	dog
+کتاب	,	book
+کتنے	,	how-many	,	howmany
+کراچی	,	karachi
+کرتا	,	does(کرتا)
+کرتی	,	does(کرتی)
+کرتے	,	do(کرتے)
+کرسی	,	chair
+کرو	,	do(کرو)
+کروں	,	do(کروں)
+کریں	,	do(کریں)
+کرے	,	do(کرے)
+کسان	,	farmer
+کل	,	tomorrow
+کلمہ چوک	,	kalmah-chowk
+کلمہ	,	kalmah
+کمرہ جماعت	,	classroom
+کمزور	,	weak
+کمپنی	,	company
+کنجوس	,	miser
+کو	,	to
+کوئلہ	,	coal
+کوئٹہ	,	quetta
+کوا	,	crow
+کوشش	,	try
+کون	,	who
+کویت	,	kuwait
+کِس	,	whose	,	whom
+کچھوا	,	tortoise
+کھیرا	,	cucumber
+کھیل	,	game	,	play(کھیل)
+کہانی	,	story
+کی	,	of(کی)
+کیا	,	what
+کیسا	,	how(کیسا)
+کیسی	,	how(کیسی)
+کیسے	,	how(کیسے)
+کیلا	,	banana
+کیلنڈر	,	calendar
+کیلکولیٹر	,	calculator
+کیمرہ	,	camera
+کیک	,	cake
+کے	,	of(کے)
+گ	,	گ
+گئی	,	gone(گئی)
+گئے	,	gone(گئے)
+گا	,	will(گا)
+گاؤں	,	village
+گائے کا گوشت	,	beef
+گائے	,	cow
+گاجر	,	carrot
+گجرات	,	gujarat
+گدھا گاڑی	,	donkey-cart
+گدھا	,	donkey
+گرم	,	hot
+گرمی	,	heat
+گرے	,	gray
+گلابی	,	pink
+گلیاں	,	streets
+گنا	,	sugarcane
+گناہ	,	sin
+گوبھی	,	cabbage
+گوجرانوالہ	,	gujranwala
+گورنمنٹ	,	government
+گھر	,	house	,	home
+گھنٹی	,	bell
+گھوڑا	,	horse
+گی	,	will(گی)
+گیا	,	went(گیا)
+گیٹ	,	gate
+گے	,	will(گے)
+ں	,	ں
+ھ	,	ھ
+ہ	,	ہ
+ہاتھی	,	elephant
+ہاسٹل	,	hostel
+ہرا	,	green
+ہری مرچ	,	green-chilli
+ہسپتال	,	hospital
+ہفتہ(week)	,	week
+ہفتہ	,	saturday
+ہم آئیں۔	,	we-come
+ہم جائیں گے۔	,	we-will-go
+ہم	,	we
+ہمارا	,	our(ہمارا)
+ہماری	,	our(ہماری)
+ہمارے	,	our(ہمارے)
+ہمسائے	,	neighbor
+ہمیشہ	,	always
+ہمیں	,	us
+ہندو	,	hindu
+ہوا	,	air
+ہوائی جہاز	,	airplane
+ہوٹل	,	hotel
+ہوں	,	am
+ہیں	,	are
+ہے	,	is
+ی	,	ی
+یقیناَ	,	indeed
+یونیفارم	,	uniform
+یونیورسٹی	,	university
+یہ	,	this
+یہاں	,	here
+ے	,	ے

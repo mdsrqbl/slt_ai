@@ -1,0 +1,487 @@
+<!--
+=========================================================
+* Soft UI Dashboard - v1.0.5
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard
+* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon"  href="{% static 'images/favicon.ico' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js"   crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+
+        <title>
+            PSL Translate - Signs to Text
+        </title>
+      
+        <!--     Fonts and icons     -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+        <!-- Nucleo Icons -->
+        <link href="https://appsrv1-147a1.kxcdn.com/soft-ui-dashboard-v105/css/nucleo-icons.css" rel="stylesheet" />
+        <link href="https://appsrv1-147a1.kxcdn.com/soft-ui-dashboard-v105/css/nucleo-svg.css" rel="stylesheet" />
+        <!-- Font Awesome Icons -->
+        <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+        <link href="https://appsrv1-147a1.kxcdn.com/soft-ui-dashboard-v105/css/nucleo-svg.css" rel="stylesheet" />
+        <!-- CSS Files -->
+        <link id="pagestyle" href="https://appsrv1-147a1.kxcdn.com/soft-ui-dashboard-v105/css/soft-ui-dashboard.css?v=1.0.5" rel="stylesheet" />
+
+        <!-- Specific CSS goes HERE -->
+        <style>
+            .Recording{
+                animation-name: pulse;
+                animation-duration: 2.0s;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+            }
+            @keyframes pulse{
+                0%{
+                    box-shadow: 0px 0px 5px  0px rgba(255,0,80,.4);
+                }
+                30%{
+                    box-shadow: 0px 0px 5px  10px rgba(255,0,80,.3);
+                }
+                60%{
+                    box-shadow: 0px 0px 5px 20px rgba(255,0,80,.2);
+                }
+                90%{
+                    box-shadow: 0px 0px 5px 30px rgba(255,0,80,.1);
+                }
+            }
+
+        </style>
+      
+    
+    
+    </head> 
+
+    <body class="g-sidenav-show bg-gray-100" style="min-width:420px">
+        {% csrf_token %}
+        <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps--active-y">
+
+            <!-- Navbar -->
+            <nav class="d-flex align-content-center" style="width:100%;">
+                <div class="col" style="width:50%">
+                    <a class="btn btn-outline-secondary bg-white shadow mt-2 mb-1 p-2" target="_self" href="/TextToSign" style="width:100%;font-size:18px;border-radius:0;">Text ➡ PSL</a>
+                </div>
+                <div class="col" style="width: 50%">
+                    <a class="btn bg-gradient-primary mt-2 mb-2 p-2" target="_blank" style="width:100%;font-size:18px;border-radius:0;">PSL ➡ Text</a>
+                </div>
+            </nav>
+            <!-- End Navbar -->
+               
+            <div class="container-fluid py-4" style="width:100%">
+                <!-- translator -->
+                <div class="card h-100">
+                    <!-- header -->
+                    <div class="card-header pb-0">
+                      <h6>PSL to Text</h6>
+                      <p class="text-sm"><span class="font-weight-bold">Translate a video of someone signing and extract text from it. The video is processed locally and only the extracted pose information is sent to the servers.</span></p>
+                    </div>
+                    <!-- end header -->
+                    <!-- pipeline -->
+                    <div class="card-body p-3">
+                      <div class="timeline timeline-one-side">
+                        <!-- Select Video -->
+                        <div class="timeline-block mb-3">
+                            <span id="video_icon" class="timeline-step">🎥</span>
+                            <div class="timeline-content">
+                                <h6 class="text-dark text-sm font-weight-bold mb-0">Select Video</h6>
+                                <div id='select_content'>
+                                    <a id="open_camera" class="btn m-0 btn-outline-primary btn-sm py-2 px-3" style="min-width:fit-content;min-height:fit-content;">Open Camera</a>
+                                    
+                                    <input id ="file_upload" accept="video/*" type="file" style="display:none;"></input>
+                                    <label for="file_upload" class="btn m-0 btn-outline-primary btn-sm py-2 px-3" style="min-width:fit-content;min-height:fit-content;">Upload File</label>
+                                    
+                                    <div id='recording_box' class="col"  style="display:none;width:min-content;">
+                                        <video id="camera_display" autoplay style="-webkit-transform: scaleX(-1);transform: scaleX(-1);width:fit-content;height:100%;max-width:80vw;max-height:80vh;"></video>
+                                        <a id="recording_btn" class="btn m-0 btn-secondary btn-lg p-5" style="min-width:fit-content;min-height:fit-content; border-radius:50%;box-shadow: 0px 0px 10px 10px rgba(100,100,100,.5);"></a>
+                                        
+                                    </div>
+                                        
+                                </div>
+                            </div> 
+                        </div>
+                        <!-- Preprocess -->
+                        <div class="timeline-block mb-3">
+                            <span id='preprocess_icon'class="timeline-step">⚙️</span>
+                            <div class="timeline-content">
+                                <h6 class="text-dark text-sm font-weight-bold mb-0">Preprocess</h6>
+                                <p  id='preprocess_p' class="text-secondary font-weight-bold text-xs mt-1 mb-0" style="display:none;">'Extracting the Pose information from the video.</p>
+                                <video id="preprocess_videobox" autoplay onplay='preprocess()' hidden muted></video>
+                            </div>
+                        </div>
+                        <!-- Upload / send to server -->
+                        <div class="timeline-block mb-3">
+                          <span id="upload_icon" class="timeline-step">⬆️</span>
+                          <div class="timeline-content">
+                            <h6 class="text-dark text-sm font-weight-bold mb-0">Upload</h6>
+                            <p id='upload_p' class="text-secondary font-weight-bold text-xs mt-1 mb-0" style="display:none;">Sending the pose information to our server.</p>
+                          </div>
+                        </div>
+                        <!-- Translate -->
+                        <div class="timeline-block mb-3">
+                            <span id="translate_icon" class="timeline-step">🤖</span>
+                            <div class="timeline-content">
+                                <h6 class="text-dark text-sm font-weight-bold mb-0">Translation</h6>
+                                <p id='translate_p' class="text-secondary font-weight-bold text-xs mt-1 mb-0" style="display:none;">The AI at the server is decoding the pose information into spoken language text.</p>
+                            </div>
+                        </div>
+                        <!-- Results -->
+                        <div class="timeline-block mb-3">
+                            <!-- results header -->
+                            <span id="results_icon" class="timeline-step">💬</span>
+                            <div class="timeline-content"><h6 class="text-dark text-sm font-weight-bold mb-0">Results</h6></div>
+                            <!-- results Content -->
+                            <div class="card-body p-3 pt-0">
+                                <div class="timeline timeline-one-side">
+                                    <!-- Gloss -->
+                                    <div id = 'gloss' style="display:none;">
+                                        <span class="timeline-step">💬</span>
+                                        <div class="timeline-content">
+                                            <h6 class="text-dark text-sm font-weight-bold mb-0">Gloss</h6>
+                                            <!-- english gloss -->
+                                            <div class="row">
+                                                <div class="col" style="max-width:15%;min-width:fit-content;"><p class="text-secondary font-weight-bold text-m mt-1 mb-0">English: </p></div>
+                                                <div class="col"><p id="en_gloss" class="text-secondary font-weight-normal text-m mt-1 mb-0"></p></div>
+                                            </div>
+                                            <!-- urdu gloss -->
+                                            <div class="row">
+                                                <div class="col" style="max-width:15%;min-width:fit-content;"><p class="text-secondary font-weight-bold text-m mt-1 mb-0">Urdu:    </p></div>
+                                                <div class="col"><p id="ur_gloss" class="text-secondary font-weight-normal text-m mt-1 mb-0" style="font-family:'Jameel Noori Nastaleeq'; font-size: x-large; word-spacing:7px;"></p></div>
+                                            </div>
+                                            <!-- end urdu gloss -->
+                                        </div>
+                                    </div>
+                                    <!-- Full Sentence -->
+                                    <div id ='sentence' style="display:none;">
+                                        <span class="timeline-step">💬</span>
+                                        <div class="timeline-content">
+                                            <h6 class="text-dark text-sm font-weight-bold mb-0">Full Sentence</h6>
+                                            <!-- english sentence -->
+                                            <div class="row">
+                                                <div class="col" style="max-width:15%;min-width:fit-content;"><p class="text-secondary font-weight-bold text-m mt-1 mb-0">English: </p></div>
+                                                <div class="col"><p id="en_sentence" class="text-secondary font-weight-normal text-m mt-1 mb-0"></p></div>
+                                            </div>
+                                            <!-- urdu sentence -->
+                                            <div class="row">
+                                                <div class="col" style="max-width:15%;min-width:fit-content;"><p class="text-secondary font-weight-bold text-m mt-1 mb-0">Urdu:    </p></div>
+                                                <div class="col"><p id="ur_sentence" class="text-secondary font-weight-normal text-m mt-1 mb-0" style="font-family:'Jameel Noori Nastaleeq'; font-size: x-large; word-spacing:7px;"></p></div>
+                                            </div>
+                                            <!-- end urdu sentence -->
+                                        </div>
+                                    </div>
+                                    <!-- End Urdu / English -->
+                                </div>
+                            </div>
+                            <!-- end results content-->
+                        </div>
+                        <!-- end results -->
+                      </div>
+                    </div>
+                    <!-- end pipeline -->
+                </div>
+                <!-- end translator -->
+
+                <!-- footer -->
+                <footer class="footer pt-3  ">
+                    <div class="container-fluid">
+                        <div class="row align-items-center justify-content-lg-between">
+                            <div class="col-lg-6 mb-lg-0 mb-4" style="width: 100%">
+                                <div class="copyright text-center text-sm text-muted text-lg-start">
+                                    Made by the collaboration between people at Faculty of Computing and Information Technology, University of the Punjab &amp; Hamza Foundation Academy for the Deaf.<br><br><br>Contact<br>mdsriqb@gmail.com
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- end footer -->
+            </div>
+
+            <!-- Mediapipe API -->
+            <script>
+                let pose_landmarks = []
+                let hand_landmarks = []
+        
+                function onPoseResults(results) {
+                    if (!results.poseWorldLandmarks) {
+                        console.log('no Pose landmarks')
+                        return;
+                    }
+                    else{
+                        const frame = []
+                        results.poseWorldLandmarks.forEach(landmark => {
+                            const {x, y, z, visibility} = landmark
+                            frame.push(x, y, z, visibility)
+                        });
+                        pose_landmarks.push(frame)
+                        return;
+                    }
+                }
+                function onHandResults(results) {
+                    if (!results.multiHandWorldLandmarks) {
+                        console.log('no Hand landmarks')
+                        return;
+                    }
+                    else{
+                        frame_leftHand  = new Array(63).fill(0);
+                        frame_rightHand = new Array(63).fill(0);
+
+                        for(let i=0; i<results.multiHandedness.length;i++){
+                            if (results.multiHandedness[i].label === "Left"){
+                                frame_leftHand =[]
+                                results.multiHandWorldLandmarks[i].forEach(landmark => {
+                                    frame_leftHand.push(landmark.x, landmark.y, landmark.z)
+                                });
+                            }
+                            else{
+                                frame_rightHand =[]
+                                results.multiHandWorldLandmarks[i].forEach(landmark => {
+                                    frame_rightHand.push(landmark.x, landmark.y, landmark.z)
+                                });
+                            }
+                        }
+                        hand_landmarks.push([...frame_leftHand,...frame_rightHand])
+                        return;
+                    }
+                }
+                
+                const pose = new Pose({locateFile: (file) => {
+                    return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;
+                }});
+                pose.setOptions({
+                    modelComplexity: 2,
+                    smoothLandmarks: true,
+                    enableSegmentation: false,
+                    smoothSegmentation: true,
+                    minDetectionConfidence: 0.5,
+                    minTrackingConfidence: 0.5
+                });
+                pose.onResults(onPoseResults);
+
+                const hands = new Hands({locateFile: (file) => {
+                    return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
+                }});
+                hands.setOptions({
+                    maxNumHands: 2,
+                    modelComplexity: 1,
+                    minDetectionConfidence: 0.5,
+                    minTrackingConfidence: 0.5
+                });
+                hands.onResults(onHandResults);
+            </script>
+            <!-- end Mediapipe API -->
+
+            <!-- Client Video -->
+            <script>
+
+                var fps = 29.29  // figure this out (file_info, camera specs)
+                var player = document.getElementById('preprocess_videobox');
+                
+                function reset_icons(){
+                    $('#gloss'          ).fadeOut('fast')
+                    $('#sentence'       ).fadeOut('fast')
+                    $('#video_icon'     ).html('🎥')
+                    $('#preprocess_icon').html('⚙️')
+                    $('#upload_icon'    ).html('⬆️')
+                    $('#translate_icon' ).html('🤖')
+                    $('#results_icon'   ).html('💬')
+                }
+                // file upload
+                var upload_btn = document.getElementById('file_upload');
+                upload_btn.addEventListener('change', function (e) {
+                    var file = e.target.files[0];
+                    player.src = URL.createObjectURL(file);
+                    upload_btn.value=''
+                    
+                    player.play()
+                });
+                upload_btn.addEventListener("click", reset_icons)
+                // end file upload
+        
+                async function preprocess() {
+                    // v-- not executing properly on second upload
+                    $('#video_icon'     ).html   ( '✔️' )
+                    $('#select_content' ).fadeOut('fast')
+                    $('#preprocess_p'   ).fadeIn ('slow')
+                    $('#preprocess_icon').fadeOut('fast')
+                    $('#preprocess_icon').html   ( '⏳' )
+                    $('#preprocess_icon').fadeIn ('fast')
+                    // ^-- not executing properly on second upload
+
+                    // v-- put this processing in worker thread
+                    await player.play()
+                    await player.pause()
+                    player.currentTime=0
+                    while(player.currentTime<player.duration){
+                        await player.pause()
+                        await pose .send({image: player});
+                        await hands.send({image: player});
+                        player.currentTime += (1 / fps)
+                        // console.log(player.currentTime , player.duration)
+                        // $('#preprocess_p').html('Extracting the Pose information from the video. ('+player.currentTime/player.duration*100+'%)')
+                    }
+                    // ^-- put this processing in worker thread
+
+                    $('#preprocess_p'   ).fadeOut('fast')
+                    $('#preprocess_icon').html   ( '✔️' )
+                    upload_landmarks()
+                }
+                
+                async function upload_landmarks(){
+                    $('#upload_p').fadeIn('slow')
+                    $('#upload_icon').fadeOut('fast')
+                    $('#upload_icon').html   ( '⏳' )
+                    $('#upload_icon').fadeIn ('fast')
+                    $.ajax({
+                        type:'POST',
+                        url:"{% url 'translatePSL' %}",
+                        data:{
+                            'duration'          : player.duration,
+                            'pose_landmarks'    : encodeURIComponent(pose_landmarks),
+                            'hand_landmarks'    : encodeURIComponent(hand_landmarks),
+                            csrfmiddlewaretoken : '{{ csrf_token }}'
+                            
+                        },
+                        success:function(result){
+                            // get progress update from server
+                            $('#upload_p'      ).fadeOut('fast')
+                            $('#upload_icon'   ).html   ('✔️')
+                            $('#translate_p'   ).fadeIn ('fast')
+                            // get progress update from server
+                            $('#translate_p'   ).fadeOut('fast')
+                            $('#translate_icon').html   ('✔️')
+                            // get response from server
+                            $('#results_icon'  ).html   ('✔️')
+
+                            $('#en_gloss'         ).text (result['en_gloss'   ]);
+                            $('#ur_gloss'         ).text (result['ur_gloss'   ]);
+                            $('#en_sentence'      ).text (result['en_sentence']);
+                            $('#ur_sentence'      ).text (result['ur_sentence']);
+
+                            $('#gloss'         ).fadeIn ('fast')
+                            $('#sentence'      ).fadeIn ('fast')
+                            $('#select_content').fadeIn ('slow')
+                            $('#video_icon'    ).html   ( '🎥' )
+                        }
+                    });
+                    player.pause();
+                    player.removeAttribute('src');
+                    player.load();
+                    pose_landmarks = [];
+                    hand_landmarks = [];
+                }
+            </script>
+
+            <!-- web Cam -->
+            <script> 
+                const camera_display = document.getElementById("camera_display");
+                let localMediaStream;
+                var chunks = [];
+
+                // success in opening the camera
+                function handleSuccess(stream) { 
+                    localMediaStream = stream;
+                    camera_display.srcObject = stream;
+
+                    var mediaRecorder = new MediaRecorder(stream);
+
+                    const recording_btn = $('#recording_btn')
+                    recording_btn[0].onclick = function() {
+                        // toggle button
+                        if(recording_btn.hasClass('Recording')){ 
+                            // OFF - state
+                            recording_btn.removeClass("Recording btn-primary");
+                            recording_btn.addClass("btn-secondary");
+
+                            mediaRecorder.stop();
+                            console.log("recorder stopped");
+
+
+                        }
+                        else{
+                            // ON - state
+                            recording_btn.removeClass("btn-secondary");
+                            recording_btn.addClass("Recording btn-primary");
+
+                            mediaRecorder.start();
+                            console.log("recorder started");
+                        }
+
+                    }
+                    
+                    mediaRecorder.onstop = function(e) {
+                        $('#open_camera').click()
+
+                        var blob = new Blob(chunks, { 'type' : 'video/mp4' });
+                        chunks = [];
+
+                        player.src = URL.createObjectURL(blob);
+
+                        player.onloadedmetadata = function(){
+                            if(player.duration === Infinity) {
+                                player.currentTime = 1e101;
+                                
+                                player.ontimeupdate = function() {
+                                    this.ontimeupdate = ()=> {return;};
+                                    }
+                                }
+                            }
+
+                        player.play()
+                    }
+
+                    mediaRecorder.ondataavailable = function(e) {
+                        chunks.push(e.data);
+                    }
+                }
+                // failure in opening the camera
+                function handleError(error) {
+                    console.error('navigator.getUserMedia error: ', error);
+                }
+
+                const constraints = {audio: false,video: true};
+
+                $('#open_camera').on('click', function (){
+                    reset_icons()
+                    const state = this.innerHTML.toLowerCase() === 'open camera' ? true : false
+                    if (state) { 
+                        // ON - camera OPEN
+                        $('#recording_box').fadeIn('fast')
+                        this.innerHTML = 'Close camera'
+
+                        navigator.mediaDevices.getUserMedia(constraints).
+                        then(handleSuccess).catch(handleError);
+
+                    } else {
+                        // OFF - camera CLOSED
+                        $('#recording_box').fadeOut('fast')
+                        this.innerHTML = 'Open camera'
+
+                        camera_display.pause();
+                        localMediaStream.getVideoTracks()[0].stop();
+                        camera_display.removeAttribute('src');
+                        camera_display.load();
+                    }
+                })  
+            </script>
+            <!-- end web Cam -->
+
+        </main>
+
+    </body>
+</html>
